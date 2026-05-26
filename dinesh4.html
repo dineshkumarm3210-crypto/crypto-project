@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-One Multi-Page Website</title>
+    <style>
+        /* --- RESET & BASIC STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        .navbar {
+            background-color: #1a252f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #b4c1c9;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+            background-color: #34495e;
+        }
+
+        /* --- PAGE LAYOUT CONTROLLER --- */
+        .page {
+            display: none; /* Hides pages by default */
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active-page {
+            display: block; /* Shows only the active page */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        p.subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        /* --- IMAGE ALIGNMENT (PREVENTS BROKEN LAYOUTS) --- */
+        .img-container {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: #e0e0e0; /* Fallback skeleton color while loading */
+        }
+
+        .responsive-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover; /* Ensures clean cutting, no stretching */
+            display: block;
+        }
+
+        /* --- PAGE 1: HOME GRID SYSTEM --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f5;
+        }
+
+        .card h3 {
+            margin: 15px 0 10px 0;
+            color: #2c3e50;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* --- PAGE 2: ABOUT SPLIT FLEX SYSTEM --- */
+        .about-split {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .about-image-wrapper {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image-wrapper .responsive-img {
+            height: 350px; /* Taller image layout for about section */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SINGLE NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="logo">SingleFileSite</div>
+        <ul class="nav-links">
+            <li><a onclick="switchPage('home', this)" class="active">Home</a></li>
+            <li><a onclick="switchPage('about', this)">About Details</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECTION 1: HOME PAGE -->
+    <div id="home" class="page active-page">
+        <h1>Welcome Home</h1>
+        <p class="subtitle">Structured content layout utilizing modern CSS Grid alignment.</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <div class="img-container">
+                    <img src="https://unsplash.com" alt="Coding Setup" class="responsive-img">
+                </div>
+                <h3>Clean Code Structure</h3>
+                <p>All styling blocks, responsive alignments, and section views are wrapped nicely into one file for fast processing.</p>
+            </div>
+            
+            <div class="card">
+                <div class="img-container">
+                    <img src="https://unsplash.com" alt="Analytics Data" class="responsive-img">
+                </div>
+                <h3>Instant Page Loading</h3>
+                <p>Images load perfectly from a live CDN network, keeping file structure clean and lightweight on your drive.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: ABOUT DETAILS PAGE -->
+    <div id="about" class="page">
+        <h1>About Details</h1>
+        <p class="subtitle">Two-column structural layout engineered using CSS Flexbox properties.</p>
+        
+        <div class="about-split">
+            <div class="about-text">
+                <h2>Our Mission & Execution</h2>
+                <p>This approach combines your pages together. When you click the navbar links, JavaScript toggles the views instantly without screen flashing or reloading delays.</p>
+                <p>The layout stays completely in perfect alignment order on mobile displays, laptops, and ultra-wide screens.</p>
+            </div>
+            <div class="about-image-wrapper">
+                <div class="img-container">
+                    <img src="https://unsplash.com" alt="Workspace Team" class="responsive-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR SINGLE-FILE PAGE TOGGLE -->
+    <script>
+        function switchPage(pageId, element) {
+            // 1. Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active-page'));
+            
+            // 2. Deactivate all navigation links
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => link.classList.remove('active'));
+            
+            // 3. Show current selected page
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // 4. Set current link as active styling
+            element.classList.add('active');
+        }
+    </script>
+
+</body>
+</html
